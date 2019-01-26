@@ -1,0 +1,24 @@
+<mat-card *ngFor="let post of posts$ | async" class="post">
+  <mat-card-header>
+    <mat-card-title [class.up]="(favoritePost$ | async).id === post.id">
+      {{ post.title }}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    {{ post.description }}
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button type="button" (click)="downvote(post)">
+      <mat-icon class="down">thumb_down</mat-icon>
+      {{ post.downvotes }}
+    </button>
+    <button mat-raised-button type="button" (click)="upvote(post)">
+      <mat-icon class="up">thumb_up</mat-icon>
+      {{ post.upvotes }}
+    </button>
+  </mat-card-actions>
+
+</mat-card>
+
